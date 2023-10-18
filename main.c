@@ -3,17 +3,19 @@
 stack_t *stack = NULL;
 int main(void) {
     char opcode[256];
+    unsigned int line_number = 1;
     char *line = NULL;
 
     while (fgets(opcode, sizeof(opcode), stdin) != NULL) {
         if (strcmp(opcode, "push\n") == 0) {
-            push(&stack);
+            push(&stack, line_number);
         } else if (strcmp(opcode, "pall\n") == 0) {
-            pall(&stack);
+            pall(&stack, line_number);
         } else {
-            fprintf(stderr, "Unknown instruction: %s", opcode);
+            fprintf(stderr, "L%u: Unknown instruction: %s", line_number, opcode);
             exit(EXIT_FAILURE);
         }
+        line_number++;
     }
 
     free(line);

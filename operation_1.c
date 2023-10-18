@@ -7,17 +7,17 @@
  * @cline: line number
  * Return: no return
  */
-void push(stack_t **stack) {
+void push(stack_t **stack, unsigned int line_number) {
     stack_t *new_node;
     char *value = strtok(NULL, " \n");
     if (value == NULL || !is_number(value)) {
-        fprintf(stderr, "Usage: push integer\n");
+        fprintf(stderr, "L%u: usage: push integer\n", line_number);
         exit(EXIT_FAILURE);
     }
 
     new_node = malloc(sizeof(stack_t));
     if (new_node == NULL) {
-        fprintf(stderr, "Memory allocation error\n");
+        fprintf(stderr, "L%u: Memory allocation error\n", line_number);
         exit(EXIT_FAILURE);
     }
 
@@ -30,10 +30,10 @@ void push(stack_t **stack) {
     *stack = new_node;
 }
 
-void pall(stack_t **stack) {
+void pall(stack_t **stack, unsigned int line_number) {
     stack_t *current = *stack;
     while (current != NULL) {
-        printf("%d\n", current->n);
+        printf("L%u: %d\n", line_number, current->n);
         current = current->next;
     }
 }
