@@ -1,7 +1,13 @@
 #include "main.h"
 
 stack_t *stack = NULL;
-
+/**
+ * _push - pushes an element to the stack
+ *
+ * @doubly: head of the linked list
+ * @cline: line number
+ * Return: no return
+ */
 void push(stack_t **stack) {
     stack_t *new_node;
     char *value = strtok(NULL, " \n");
