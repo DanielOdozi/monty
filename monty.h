@@ -73,4 +73,6 @@ void custom_nop(stack_t **stack, unsigned int line_num);
 void custom_sub(stack_t **stack, unsigned int line_num);
 void custom_div(stack_t **stack, unsigned int line_num);
 void custom_mul(stack_t **stack, unsigned int line_num);
+void custom_mod(stack_t **stack, unsigned int line_num);
+void custom_pchar(stack_t **stack, unsigned int line_num);
 #endif /*MONTY_H*/
