@@ -87,3 +87,26 @@ void print_top(stack_t **stack, unsigned int line_num)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+/**
+ * pop_top - pops the top element from the stack
+ * @stack: pointer to the stack
+ * @line_num: line number
+ * Return: no return
+ */
+void pop_top(stack_t **stack, unsigned int line_num)
+{
+	stack_t *top;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		fclose(global.file);
+		free(global.content);
+		deallocate_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	top = *stack;
+	*stack = top->next;
+	free(top);
+}
