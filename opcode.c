@@ -16,6 +16,7 @@ int execute_opcode(char *cont, stack_t **stack, unsigned int count, FILE *file)
         {"nop", custom_nop}, {"sub", custom_sub}, {"div", custom_div},
         {"mul", custom_mul}, {"mod", custom_mod}, {"pchar", custom_pchar},
         {"pstr", custom_pstr}, {"rotl", custom_rotl}, {"rotr", custom_rotr},
+        {"queue", set_queue}, {"stack", custom_stack},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;

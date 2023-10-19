@@ -1,6 +1,19 @@
 #include "monty.h"
 
 /**
+ * custom_stack - Switch the data structure to stack mode.
+ * @stack: Pointer to the stack
+ * @line_num: Line number
+ * Return: No return
+ */
+void custom_stack(stack_t **stack, unsigned int line_num)
+{
+	(void)stack;
+	(void)line_num;
+	global.lifo = 0;
+}
+
+/**
  * add_node_top - Adds a node to the top of the stack.
  * @head: Pointer to the head of the stack.
  * @n: The value to be added.
