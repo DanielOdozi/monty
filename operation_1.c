@@ -7,7 +7,7 @@
  * @line_num: line number
  * Return: no return
  */
-void push(stack_t **stack, unsigned int line_num) {
+void _push(stack_t **stack, unsigned int line_num) {
     int value, idx = 0, error_flag = 0;
 
     if (figo.arg) {
