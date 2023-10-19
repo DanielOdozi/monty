@@ -69,4 +69,5 @@ void pop_top(stack_t **stack, unsigned int line_num);
 void print_top(stack_t **stack, unsigned int line_num);
 void swap_top_two(stack_t **stack, unsigned int line_num);
 void custom_add(stack_t **stack, unsigned int line_num);
+void custom_nop(stack_t **stack, unsigned int line_num);
 #endif /*MONTY_H*/

@@ -181,3 +181,15 @@ void custom_add(stack_t **stack, unsigned int line_num)
     *stack = aux;
     free(current);
 }
+
+/**
+ * custom_nop - Does nothing.
+ * @stack: Pointer to the stack
+ * @line_num: Line number
+ * Return: No return
+ */
+void custom_nop(stack_t **stack, unsigned int line_num)
+{
+	(void)stack;
+	(void)line_num;
+}
