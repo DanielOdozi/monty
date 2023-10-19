@@ -44,33 +44,33 @@ typedef struct instruction_s
 
 typedef struct globals
 {
-	int lifo;
-	unsigned int cont;
 	char  *arg;
-	stack_t *head;
 	FILE *fd;
 	char *buffer;
+	int fifi;
 } global_t;
 
-extern global_t vglo;
+extern global_t figo;
 
 /*Double linked list*/
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 stack_t *add_dnodeint(stack_t **head, const int n);
-void free_dlistint(stack_t *head);
+void add_node_to_queue(stack_t **head, int n);
 
 /*Push and Pall*/
 extern stack_t *stack;
-void _push(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
-void print_push_error(unsigned int line_number);
-int is_integer(const char *str);
+void _push(stack_t **stack, unsigned int number);
+void _pall(stack_t **stack, unsigned int line);
+void print_top(stack_t **stack, unsigned int line_number);
 
 /*func*/
-void (*get_opcodes(char *op))(stack_t **stack, unsigned int line_number);
+int run_opcode(char *instruction, stack_t **stack, unsigned int line_num, FILE *monty_file);
 
 /*Main.c*/
 void cleanup_globals();
 FILE *check_input(int argc, char *argv[]);
+
+/*free_stack*/
+void deallocate_stack(stack_t *start);
 
 #endif /*MAIN_H*/

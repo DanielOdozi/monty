@@ -78,20 +78,3 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 
 	return (new_node);
 }
-
-/**
- * free_dlistint - frees the doubly linked list
- * @head: pointer to the first node of the linked list
- */
-void free_dlistint(stack_t *head)
-{
-	stack_t *current, *next_node;
-
-	current = head;
-	while (current != NULL)
-	{
-		next_node = current->next;
-		free(current);
-		current = next_node;
-	}
-}
