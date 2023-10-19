@@ -6,14 +6,14 @@
  */
 void deallocate_stack(stack_t *start)
 {
-	stack_t *temp;
+	stack_t *current, *temp;
 
-	temp = start;
+	current = start;
 
-	while (start)
+	while (current)
 	{
-		temp = start->next;
-		free(start);
-		start = temp;
+		temp = current->next;
+		free(current);
+		current = temp;
 	}
 }

@@ -42,41 +42,27 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct globals - Struct to store global data
- * @arg: Command argument string
- * @fd: File pointer
- * @buffer: Line buffer
- * @fifi: An integer flag
+ * struct global_s - variables -args, file, line content
+ * @arg: value
+ * @file: pointer to monty file
+ * @content: line content
+ * @lifi: flag change stack <-> queue
+ * Description: carries values through the program
  */
-typedef struct globals
+typedef struct global_s
 {
-	char  *arg;
-	FILE *fd;
-	char *buffer;
-	int fifi;
-} global_t;
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifo;
+}  global_t;
+extern global_t global;
 
-extern global_t figo;
-
-/*Double linked list*/
-stack_t *add_dnodeint_end(stack_t **head, const int n);
-stack_t *add_dnodeint(stack_t **head, const int n);
+void push_top(stack_t **head, unsigned int counter);
 void add_node_to_queue(stack_t **head, int n);
-
-/*Push and Pall*/
-extern stack_t *stack;
-void _push(stack_t **stack, unsigned int number);
-void _pall(stack_t **stack, unsigned int line);
-void print_top(stack_t **stack, unsigned int line_number);
-
-/*func*/
-int run_opcode(char *inst, stack_t **stack, unsigned int line_num, FILE *mon);
-
-/*Main.c*/
-void cleanup_globals(void);
-FILE *check_input(int argc, char *argv[]);
-
-/*free_stack*/
+void set_queue(stack_t **head, unsigned int counter);
+void print_stack(stack_t **stack, unsigned int line_num);
 void deallocate_stack(stack_t *start);
-
-#endif /*MAIN_H*/
+void add_node_top(stack_t **head, int n);
+int execute_opcode(char *cont, stack_t **stack, unsigned int count, FILE *file);
+#endif /*MONTY_H*/
