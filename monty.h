@@ -67,4 +67,5 @@ void add_node_top(stack_t **head, int n);
 int execute_opcode(char *cont, stack_t **stack, unsigned int count, FILE *file);
 void pop_top(stack_t **stack, unsigned int line_num);
 void print_top(stack_t **stack, unsigned int line_num);
+void swap_top_two(stack_t **stack, unsigned int line_num);
 #endif /*MONTY_H*/

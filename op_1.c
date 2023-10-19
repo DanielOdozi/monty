@@ -110,3 +110,36 @@ void pop_top(stack_t **stack, unsigned int line_num)
 	*stack = top->next;
 	free(top);
 }
+
+/**
+ * swap_top_two - swaps the top two elements of the stack.
+ * @stack: pointer to the stack
+ * @line_num: line number
+ * Return: no return
+ */
+void swap_top_two(stack_t **stack, unsigned int line_num)
+{
+	stack_t *top;
+	int length = 0, temp;
+
+	top = *stack;
+	while (top)
+	{
+		top = top->next;
+		length++;
+	}
+
+	if (length < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		fclose(global.file);
+		free(global.content);
+		deallocate_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	temp = top->n;
+	top->n = top->next->n;
+	top->next->n = temp;
+}
