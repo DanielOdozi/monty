@@ -2,43 +2,49 @@
 
 
 /**
- * main - pushes an element to the stack
- *
- * @void: to void statement
- * Return: no return
+ * main - Entry point of the program.
+ * @argc: Argument count.
+ * @argv: Argument vector.
+ * Return: EXIT_SUCCESS or EXIT_FAILURE.
  */
-int main(void)
+int main(int argc, char *argv[])
 {
-	char opcode[256];
-	unsigned int line_number = 1;
-	char *line = NULL;
+    char opcode[256];
+    unsigned int line_number = 1;
+	stack_t *stack = NULL;
 
-	while (fgets(opcode, sizeof(opcode), stdin) != NULL)
-	{
-		if (strcmp(opcode, "push\n") == 0)
-		{
-			push(&stack, line_number);
-		}
-		else if (strcmp(opcode, "pall\n") == 0)
-		{
-			pall(&stack, line_number);
-		}
-		else
-		{
-			fprintf(stderr, "L%u: Unknown instruction: %s", line_number, opcode);
-			exit(EXIT_FAILURE);
-		}
-		line_number++;
-	}
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s <input_file>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
 
-	free(line);
-	while (stack != NULL)
-	{
-		stack_t *temp = stack;
+    freopen(argv[1], "r", stdin);
 
-		stack = stack->next;
-		free(temp);
-	}
+    while (fgets(opcode, sizeof(opcode), stdin) != NULL)
+    {
+        if (strcmp(opcode, "push\n") == 0)
+        {
+            push(&stack, line_number);
+        }
+        else if (strcmp(opcode, "pall\n") == 0)
+        {
+            pall(&stack, line_number);
+        }
+        else
+        {
+            fprintf(stderr, "L%u: Unknown instruction: %s", line_number, opcode);
+            return EXIT_FAILURE;
+        }
+        line_number++;
+    }
 
-	return (0);
+    while (stack != NULL)
+    {
+        stack_t *temp = stack;
+        stack = stack->next;
+        free(temp);
+    }
+
+    return EXIT_SUCCESS;
 }
