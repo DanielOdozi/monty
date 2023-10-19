@@ -41,7 +41,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+/**
+ * struct globals - Struct to store global data
+ * @arg: Command argument string
+ * @fd: File pointer
+ * @buffer: Line buffer
+ * @fifi: An integer flag
+ */
 typedef struct globals
 {
 	char  *arg;
@@ -64,10 +70,10 @@ void _pall(stack_t **stack, unsigned int line);
 void print_top(stack_t **stack, unsigned int line_number);
 
 /*func*/
-int run_opcode(char *instruction, stack_t **stack, unsigned int line_num, FILE *monty_file);
+int run_opcode(char *inst, stack_t **stack, unsigned int line_num, FILE *mon);
 
 /*Main.c*/
-void cleanup_globals();
+void cleanup_globals(void);
 FILE *check_input(int argc, char *argv[]);
 
 /*free_stack*/

@@ -1,18 +1,19 @@
 #include "monty.h"
+
 /**
-* free_stack - frees a doubly linked list
-* @start: head of the stack
-*/
+ * deallocate_stack - Frees a doubly linked list.
+ * @start: Head of the stack.
+ */
 void deallocate_stack(stack_t *start)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    temp = start;
+	temp = start;
 
-    while (start)
-    {
-        temp = start->next;
-        free(start);
-        start = temp;
-    }
+	while (start)
+	{
+		temp = start->next;
+		free(start);
+		start = temp;
+	}
 }
