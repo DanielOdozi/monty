@@ -68,3 +68,22 @@ void print_stack(stack_t **stack, unsigned int line_num)
 		current = current->next;
 	}
 }
+
+/**
+ * print_top - prints the top element of the stack
+ * @stack: pointer to the stack
+ * @line_num: line number
+ * Return: no return
+ */
+void print_top(stack_t **stack, unsigned int line_num)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack is empty\n", line_num);
+		fclose(global.file);
+		free(global.content);
+		deallocate_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
