@@ -11,7 +11,7 @@
 int execute_opcode(char *cont, stack_t **stack, unsigned int count, FILE *file)
 {
 	instruction_t opcodes[] = {
-		{"push", push_top}, {"pall", print_stack},
+		{"push", push_top}, {"pall", print_stack}, {"pint", print_top}
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
