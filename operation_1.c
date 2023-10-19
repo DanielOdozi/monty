@@ -54,6 +54,28 @@ void _pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * _pint - prints the value at the top of the stack
+ *
+ * @stack: head of the linked list
+ * @line_number: line number
+ * Return: no return
+ */
+void _pint(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (*stack == NULL)
+	{
+		dprintf(2, "L%u: ", line_number);
+		dprintf(2, "can't pint, stack empty\n");
+		cleanup_globals();
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*stack)->n);
+}
+
 int is_integer(const char *str)
 {
 	int i = 0;
