@@ -152,19 +152,32 @@ void swap_top_two(stack_t **stack, unsigned int line_num)
  */
 void custom_add(stack_t **stack, unsigned int line_num)
 {
-	stack_t *current = *stack;
+    stack_t *current, *aux;
+    int stack_size = 0, result;
 
-	if (!current || !current->next)
-	{
-		fprintf(stderr, "L%d: unable to add, stack too short\n", line_num);
-		fclose(global.file);
-		free(global.content);
-		deallocate_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+    current = *stack;
+    aux = current;
+    
+    while (aux)
+    {
+        aux = aux->next;
+        stack_size++;
+    }
 
-	current->next->n += current->n;
+    if (stack_size < 2)
+    {
+        fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
+        fclose(global.file);
+        free(global.content);
+        deallocate_stack(*stack);
+        exit(EXIT_FAILURE);
+    }
 
-	*stack = current->next;
-	(*stack)->prev = NULL;
+    result = current->n + current->next->n;
+    current->next->n = result;
+
+    aux = current->next;
+    aux->prev = NULL;
+    *stack = aux;
+    free(current);
 }
