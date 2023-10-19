@@ -143,3 +143,28 @@ void swap_top_two(stack_t **stack, unsigned int line_num)
 	top->n = top->next->n;
 	top->next->n = temp;
 }
+
+/**
+ * custom_add - adds the top two elements of the stack.
+ * @stack: pointer to the stack
+ * @line_num: line number
+ * Return: no return
+ */
+void custom_add(stack_t **stack, unsigned int line_num)
+{
+	stack_t *current = *stack;
+
+	if (!current || !current->next)
+	{
+		fprintf(stderr, "L%d: unable to add, stack too short\n", line_num);
+		fclose(global.file);
+		free(global.content);
+		deallocate_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	current->next->n += current->n;
+
+	*stack = current->next;
+	(*stack)->prev = NULL;
+}

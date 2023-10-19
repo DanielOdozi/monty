@@ -12,7 +12,7 @@ int execute_opcode(char *cont, stack_t **stack, unsigned int count, FILE *file)
 {
 	instruction_t opcodes[] = {
 		{"push", push_top}, {"pall", print_stack}, {"pint", print_top},
-        {"pop", pop_top}, {"swap", swap_top_two},
+        {"pop", pop_top}, {"swap", swap_top_two}, {"add", custom_add},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
