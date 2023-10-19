@@ -51,10 +51,8 @@ FILE *check_input(int argc, char *argv[])
  */
 void cleanup_globals() {
     free_dlistint(vglo.head);
-    free(vglo.buffer);
-    if (vglo.fd) {
-        fclose(vglo.fd);
-    }
+	free(vglo.buffer);
+	fclose(vglo.fd);
 }
 
 /**
